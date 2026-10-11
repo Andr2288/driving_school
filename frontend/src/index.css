@@ -21,6 +21,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-body);
+  font-size: 16px;
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 35%),
@@ -39,9 +40,9 @@ p {
 }
 
 .app-shell {
-  max-width: 1120px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 20px 48px;
+  padding: 28px 24px 56px;
 }
 
 .site-header {
@@ -59,7 +60,7 @@ p {
 
 .brand-logo {
   display: block;
-  height: 56px;
+  height: 64px;
   width: auto;
 }
 
@@ -71,9 +72,10 @@ p {
 }
 
 .site-nav a {
-  padding: 10px 14px;
+  padding: 11px 16px;
   border-radius: 999px;
   color: var(--muted);
+  font-size: 15px;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -88,18 +90,18 @@ p {
   border: 1px solid var(--border);
   border-radius: 28px;
   box-shadow: var(--shadow);
-  padding: 32px;
+  padding: 36px;
 }
 
 .page {
   display: grid;
-  gap: 24px;
+  gap: 28px;
 }
 
 .page-heading h1 {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  line-height: 1.05;
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  line-height: 1.2;
   margin-bottom: 0;
 }
 
@@ -152,19 +154,19 @@ p {
   gap: 18px;
   padding: 20px;
   border: 1px solid var(--border);
-  border-radius: 20px;
-  background: #edf4f2;
+  border-radius: 8px;
+  background: #ffffff;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 14px 18px;
 }
 
 .field {
   display: grid;
-  gap: 6px;
+  gap: 7px;
 }
 
 .field.wide {
@@ -173,37 +175,78 @@ p {
 
 .field span {
   color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .field input,
 .field select,
 .field textarea {
   width: 100%;
-  padding: 11px 12px;
+  min-height: 40px;
+  padding: 8px 12px;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #ffffff;
+  border-radius: 6px;
+  background: #fafcfb;
   color: var(--text);
   font: inherit;
+  font-size: 15px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.field textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  background: #f3f7f6;
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: 2px solid rgba(15, 118, 110, 0.25);
+  outline: none;
   border-color: var(--teal);
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.18);
 }
 
 .form-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
+}
+
+.resource-form .button {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  transform: none;
+}
+
+.resource-form .button:hover:not(:disabled) {
+  transform: none;
+}
+
+.resource-form .button-secondary {
+  background: #f3f7f6;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.resource-form .button-secondary:hover:not(:disabled) {
+  background: #eef5f3;
 }
 
 .status {
   color: var(--muted);
+  font-size: 15px;
 }
 
 .status.error {
@@ -226,16 +269,16 @@ p {
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
-  font-size: 13px;
+  font-size: 15px;
   font-variant-numeric: tabular-nums;
 }
 
 .data-table thead th {
-  height: 36px;
-  padding: 0 12px;
+  height: 42px;
+  padding: 0 14px;
   background: #f3f7f6;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.01em;
   text-align: center;
@@ -246,7 +289,7 @@ p {
 }
 
 .data-table tbody td {
-  padding: 10px 12px;
+  padding: 12px 14px;
   background: #fafcfb;
   color: var(--text);
   text-align: center;
@@ -260,7 +303,7 @@ p {
 .data-table thead th:last-child,
 .data-table tbody td:last-child {
   border-right: none;
-  width: 7.5rem;
+  width: 8.5rem;
 }
 
 .data-table tbody tr:last-child td {
@@ -269,10 +312,10 @@ p {
 
 .data-table thead th:first-child,
 .data-table tbody td:first-child {
-  width: 3.25rem;
+  width: 3.5rem;
   color: var(--muted);
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .data-table tbody tr:hover td {
@@ -296,13 +339,13 @@ p {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 5px 8px;
+  padding: 6px 10px;
   border: 1px solid transparent;
   border-radius: 6px;
   background: transparent;
   color: var(--teal-dark);
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
