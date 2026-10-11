@@ -259,7 +259,7 @@ function ResourcePage({
 
       {!loading && items.length > 0 && (
         <div className="table-wrap">
-          <table>
+          <table className="data-table">
             <thead>
               <tr>
                 {columns.map((column) => (
@@ -270,20 +270,23 @@ function ResourcePage({
             </thead>
             <tbody>
               {items.map((item) => (
-                <tr key={item.id}>
+                <tr
+                  key={item.id}
+                  className={editingId === item.id ? "is-editing" : undefined}
+                >
                   {columns.map((column) => (
                     <td key={column.key}>{renderCell(item, column)}</td>
                   ))}
                   <td className="actions-cell">
                     <button
-                      className="button button-small"
+                      className="button-table"
                       type="button"
                       onClick={() => startEdit(item)}
                     >
                       Редагувати
                     </button>
                     <button
-                      className="button button-small button-danger"
+                      className="button-table button-table-danger"
                       type="button"
                       onClick={() => handleDelete(item.id)}
                     >
