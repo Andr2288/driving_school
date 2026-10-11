@@ -1,0 +1,16 @@
+{
+  "name": "@driving_school/backend",
+  "version": "1.0.0",
+  "description": "Driving school API",
+  "main": "index.js",
+  "scripts": {
+    "db:setup": "node db_setup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "mysql2": "^3.24.5"
+  }
+}
