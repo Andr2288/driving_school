@@ -4,7 +4,7 @@
   "description": "Driving school API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "dev": "node index.js",
     "db:setup": "node db_setup.js"
   },
   "keywords": [],
