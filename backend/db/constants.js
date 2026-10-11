@@ -3,6 +3,7 @@ const DB_PORT = 3306;
 const DB_USER = "root";
 const DB_PASSWORD = "";
 const DB_NAME = "driving_school";
+const PORT = 3001;
 
 const TABLES = [
   "categories",
@@ -19,5 +20,6 @@ module.exports = {
   DB_USER,
   DB_PASSWORD,
   DB_NAME,
+  PORT,
   TABLES,
 };
