@@ -108,6 +108,7 @@ function ResourcePage({
     setForm(nextForm);
     setMessage("");
     setError("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function resetForm() {
