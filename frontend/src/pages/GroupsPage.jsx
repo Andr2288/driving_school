@@ -1,6 +1,11 @@
 import ResourcePage from "../components/ResourcePage";
 import { getCategories, getInstructors } from "../api";
 
+const STATUS_LABELS = {
+  active: "активна",
+  completed: "завершена",
+};
+
 function GroupsPage() {
   return (
     <ResourcePage
@@ -30,8 +35,8 @@ function GroupsPage() {
           label: "Статус",
           type: "select",
           options: [
-            { value: "active", label: "active" },
-            { value: "completed", label: "completed" },
+            { value: "active", label: STATUS_LABELS.active },
+            { value: "completed", label: STATUS_LABELS.completed },
           ],
         },
         {
@@ -51,7 +56,11 @@ function GroupsPage() {
         { key: "id", label: "ID" },
         { key: "name", label: "Назва" },
         { key: "start_date", label: "Старт" },
-        { key: "status", label: "Статус" },
+        {
+          key: "status",
+          label: "Статус",
+          render: (item) => STATUS_LABELS[item.status] || item.status,
+        },
         {
           key: "category_id",
           label: "Категорія",

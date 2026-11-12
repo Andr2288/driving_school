@@ -1,6 +1,11 @@
 import ResourcePage from "../components/ResourcePage";
 import { getGroups, getInstructors, getVehicles } from "../api";
 
+const TYPE_LABELS = {
+  theory: "теорія",
+  practice: "практика",
+};
+
 function LessonsPage() {
   return (
     <ResourcePage
@@ -40,8 +45,8 @@ function LessonsPage() {
           label: "Тип",
           type: "select",
           options: [
-            { value: "theory", label: "theory" },
-            { value: "practice", label: "practice" },
+            { value: "theory", label: TYPE_LABELS.theory },
+            { value: "practice", label: TYPE_LABELS.practice },
           ],
         },
         { name: "topic", label: "Тема", type: "text", wide: true },
@@ -72,7 +77,11 @@ function LessonsPage() {
           label: "Дата",
           render: (item) => String(item.lesson_date).slice(0, 16),
         },
-        { key: "type", label: "Тип" },
+        {
+          key: "type",
+          label: "Тип",
+          render: (item) => TYPE_LABELS[item.type] || item.type,
+        },
         { key: "topic", label: "Тема" },
         {
           key: "group_id",

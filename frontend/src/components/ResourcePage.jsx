@@ -21,6 +21,23 @@ function toInputValue(field, value) {
   return String(value);
 }
 
+function localToday() {
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${now.getFullYear()}-${month}-${day}`;
+}
+
+function fieldMax(field) {
+  if (field.maxCurrentYear) {
+    return new Date().getFullYear();
+  }
+  if (field.notFuture) {
+    return localToday();
+  }
+  return field.max;
+}
+
 function toPayload(fields, form) {
   const payload = {};
 
@@ -197,8 +214,10 @@ function ResourcePage({
         {...common}
         type={field.type || "text"}
         min={field.min}
-        max={field.max}
+        max={fieldMax(field)}
         step={field.step}
+        pattern={field.pattern}
+        title={field.title}
       />
     );
   }

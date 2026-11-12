@@ -18,9 +18,20 @@ function StudentsPage() {
       fields={[
         { name: "first_name", label: "Імʼя", type: "text" },
         { name: "last_name", label: "Прізвище", type: "text" },
-        { name: "phone", label: "Телефон", type: "text" },
+        {
+          name: "phone",
+          label: "Телефон",
+          type: "tel",
+          pattern: "\\+380\\d{9}",
+          title: "Формат: +380 і 9 цифр",
+        },
         { name: "email", label: "Email", type: "email" },
-        { name: "birth_date", label: "Дата народження", type: "date" },
+        {
+          name: "birth_date",
+          label: "Дата народження",
+          type: "date",
+          notFuture: true,
+        },
         {
           name: "group_id",
           label: "Група",

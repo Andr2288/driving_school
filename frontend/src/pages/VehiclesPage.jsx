@@ -24,7 +24,7 @@ function VehiclesPage() {
           label: "Рік",
           type: "number",
           min: 1990,
-          max: 2100,
+          maxCurrentYear: true,
         },
         {
           name: "category_id",

@@ -1,0 +1,98 @@
+@baseUrl = http://localhost:3001/api
+
+### Список категорій
+GET {{baseUrl}}/categories
+Accept: application/json
+
+### Створити категорію
+# @name createCategory
+POST {{baseUrl}}/categories
+Content-Type: application/json
+
+{
+  "code": "TB",
+  "name": "Категорія TB",
+  "description": "Тролейбуси"
+}
+
+> {%
+  client.global.set("categoryId", response.body.id);
+%}
+
+### Категорія за id
+GET {{baseUrl}}/categories/{{categoryId}}
+Accept: application/json
+
+### Створити інструктора
+# @name createInstructor
+POST {{baseUrl}}/instructors
+Content-Type: application/json
+
+{
+  "first_name": "Назар",
+  "last_name": "Савчук",
+  "phone": "+380671234567",
+  "email": "n.savchuk@drive.ua",
+  "hire_date": "2024-05-10"
+}
+
+> {%
+  client.global.set("instructorId", response.body.id);
+%}
+
+### Оновити телефон інструктора
+PUT {{baseUrl}}/instructors/{{instructorId}}
+Content-Type: application/json
+
+{
+  "first_name": "Назар",
+  "last_name": "Савчук",
+  "phone": "+380679998877",
+  "email": "n.savchuk@drive.ua",
+  "hire_date": "2024-05-10"
+}
+
+### Некоректний телефон (очікуємо 400)
+POST {{baseUrl}}/instructors
+Content-Type: application/json
+
+{
+  "first_name": "Тест",
+  "last_name": "Тест",
+  "phone": "0671234567",
+  "email": "bad.phone@drive.ua",
+  "hire_date": "2024-05-10"
+}
+
+### Створити авто для нової категорії
+# @name createVehicle
+POST {{baseUrl}}/vehicles
+Content-Type: application/json
+
+{
+  "brand": "Skoda",
+  "model": "Octavia",
+  "plate_number": "KA7777BE",
+  "year": 2024,
+  "category_id": {{categoryId}}
+}
+
+> {%
+  client.global.set("vehicleId", response.body.id);
+%}
+
+### Список авто
+GET {{baseUrl}}/vehicles
+Accept: application/json
+
+### Видалити створене авто
+DELETE {{baseUrl}}/vehicles/{{vehicleId}}
+
+### Видалити створену категорію
+DELETE {{baseUrl}}/categories/{{categoryId}}
+
+### Видалити створеного інструктора
+DELETE {{baseUrl}}/instructors/{{instructorId}}
+
+### Видалити категорію, на яку посилаються авто (очікуємо 409)
+DELETE {{baseUrl}}/categories/3

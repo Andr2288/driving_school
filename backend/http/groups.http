@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:3001/api
+
+### Список курсантів
+GET {{baseUrl}}/students
+Accept: application/json
+
+### Створити курсанта в новій групі
+# @name createStudent
+POST {{baseUrl}}/students
+Content-Type: application/json
+
+{
+  "first_name": "Христина",
+  "last_name": "Бондар",
+  "phone": "+380501112233",
+  "email": "kh.bondar@gmail.com",
+  "birth_date": "2004-06-15",
+  "group_id": 1
+}
+
+> {%
+  client.global.set("studentId", response.body.id);
+%}
+
+### Некоректна дата народження (очікуємо 400)
+POST {{baseUrl}}/students
+Content-Type: application/json
+
+{
+  "first_name": "Тест",
+  "last_name": "Тест",
+  "phone": "+380509998877",
+  "email": "bad.date@gmail.com",
+  "birth_date": "15.06.2004",
+  "group_id": 3
+}
+
+### Видалити створеного курсанта
+DELETE {{baseUrl}}/students/{{studentId}}
